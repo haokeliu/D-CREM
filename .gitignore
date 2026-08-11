@@ -1,0 +1,38 @@
+__pycache__/
+*.py[cod]
+*.so
+*.dll
+*.dylib
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+*.egg-info/
+build/
+dist/
+.DS_Store
+.idea/
+.vscode/
+*.log
+
+# Third-party data, downloaded weights, and generated caches
+datasets_raw/*
+!datasets_raw/README.md
+datasets/*
+cache/*
+!cache/README.md
+
+# Large analysis artifacts are local. Formal Protocol-v2 result JSON files are
+# intentionally versioned with their experiment batch.
+results/analysis_cache*/
+results/figures/
+results/**/*.png
+results/**/*.pdf
+
+# Local analysis and temporary artifacts
+output/
+tmp/
+.matplotlib-cache/

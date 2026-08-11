@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the associated D-CREM paper and the original methods you evaluate."
+title: "D-CREM: Deep Classifier-induced Reciprocal Points for Multi-label Open-set Recognition"
+type: software
+authors:
+  - name: "D-CREM Authors"
+version: 0.1.0
+date-released: 2026-08-10
+license: MIT

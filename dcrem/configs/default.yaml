@@ -1,0 +1,36 @@
+# D-CREM default configuration
+# See docs/protocol-v2.zh-CN.md for locked protocol conventions.
+
+model:
+  encoder: "mlp"              # mlp | resnet50 | clip | identity
+  feature_dim: 128            # output dim of encoder
+  label_embed_dim: 128        # d_e for CorrelationModule
+  use_calibrator: false       # use learnable calibrator (experimental)
+  frozen_encoder: false       # freeze backbone (for feature quality tests)
+
+training:
+  mode: "B"                   # A (end-to-end SGD) | B (hybrid)
+  epochs: 100
+  batch_size: 64
+  lr: 1.0e-4
+  backbone_lr: 1.0e-5
+  weight_decay: 1.0e-4
+  T_sylvester: 10             # Sylvester interval for mode B
+  T_warmup: 5                 # warm-up epochs
+  pre_warmup_epochs: 10       # tabular pre-warmup (0 for image)
+
+losses:
+  lamda1: 1.0                 # ridge penalty on W
+  lamda2: 0.1                 # label correlation
+  lamda3: 10.0                # W-P coupling
+  alpha: 1.0                  # open-space risk weight
+  beta: 0.1                   # uniformity weight
+  gamma: 0.01                 # diversity weight
+  tau: 2.0                    # uniformity temperature
+  theta_div: 0.9              # diversity cosine threshold
+
+data:
+  known_ratio: 0.5
+  seed: 0
+  standardize: true
+  train_ratio: 0.5

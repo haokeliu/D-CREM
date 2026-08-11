@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "d-crem"
+version = "0.1.0"
+description = "Deep classifier-induced reciprocal points for multi-label open-set recognition"
+readme = "README.md"
+requires-python = ">=3.9,<3.13"
+license = {file = "LICENSE"}
+authors = [{name = "D-CREM Authors"}]
+keywords = ["open-set recognition", "multi-label learning", "reciprocal points"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.9",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+  "numpy==1.26.4",
+  "scipy==1.13.1",
+  "scikit-learn==1.5.1",
+  "torch==2.8.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest==8.3.2"]
+vision = [
+  "torchvision==0.23.0",
+  "open-clip-torch",
+  "Pillow",
+  "certifi",
+]
+analysis = ["matplotlib", "Pillow"]
+
+[project.scripts]
+dcrem-train = "dcrem.scripts.train:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["crem*", "dcrem*", "baselines*"]
+
+[tool.setuptools.package-data]
+dcrem = ["configs/*.yaml"]
+
+[tool.pytest.ini_options]
+testpaths = ["dcrem/tests"]
+addopts = "-ra"
+

@@ -1,0 +1,27 @@
+# VOC2007-specific D-CREM config
+
+model:
+  encoder: "resnet50"
+  feature_dim: 2048
+  frozen_encoder: true        # ResNet-50 frozen (ImageNet pretrained)
+
+training:
+  mode: "B"
+  epochs: 100
+  batch_size: 64
+  lr: 1.0e-4
+  backbone_lr: 0.0            # frozen encoder → no backbone LR needed
+  T_sylvester: 10
+  T_warmup: 5
+  pre_warmup_epochs: 0        # skip — ResNet is already semantic
+
+losses:
+  lamda1: 1.0
+  lamda2: 0.1
+  lamda3: 10.0
+  alpha: 1.0
+  beta: 0.1
+  gamma: 0.01
+
+data:
+  known_ratio: 0.5
