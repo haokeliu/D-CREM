@@ -5,19 +5,6 @@ multi-label open-set recognition (MLOSR). This repository also contains a
 leakage-free Python reproduction of CREM and Python implementations of the
 SLAN and MUENL-F baselines.
 
-The release follows Protocol v2:
-
-- train / validation / test samples are split 40% / 10% / 50%;
-- feature selection, standardization, fitting, and calibration use training
-  data only;
-- hyperparameters and top-K are selected on validation data;
-- the locked model is evaluated on the test split once;
-- every method reuses the same split for a given
-  `(dataset, known_ratio, seed)`.
-
-The mathematical definitions and full protocol are documented in
-[docs/protocol-v2.zh-CN.md](docs/protocol-v2.zh-CN.md).
-
 ## Installation
 
 The reference environment uses Python 3.9 and NumPy 1.26.x.
